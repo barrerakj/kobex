@@ -1,6 +1,6 @@
 $(function(){
 
-    var base_url = "http://localhost/repo/";
+    var base_url = "http://localhost/kobex-app/";
 
     $(".btn-cuenta-nueva").on("click", function(){
         $(".cuenta-nueva").slideDown();
