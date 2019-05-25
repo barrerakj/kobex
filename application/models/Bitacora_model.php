@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sesion_model extends CI_Model {
+class Bitacora_model extends CI_Model {
     
-    public function registrar($user_id){
-        $sql = "INSERT INTO sessions (users_id, created_at) VALUES (".$user_id.",'".date("Y-m-d H:i:s")."')";
-        if ($this->db->query($sql))
+    public function registrar($user_id, $action){
+        $sql = "INSERT INTO logs (users_id, action, created_at) VALUES (?,?,'".date("Y-m-d H:i:s")."')";
+        if ($this->db->query($sql, array($user_id,$action)))
             return true;
         else
             return false;

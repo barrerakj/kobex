@@ -6,7 +6,7 @@ class Autenticacion extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Autenticacion_model');
-        $this->load->model('Sesion_model');
+        $this->load->model('Bitacora_model');
         $this->load->model('Usuario_model');
     }
 
@@ -22,7 +22,7 @@ class Autenticacion extends CI_Controller {
         $id_usuario = $this->Autenticacion_model->obtener_id($email);
 
         //Obtener ID de usuario principal para obtener datos correctos
-        $id_principal = $this->Autenticacion_model->obtener_id_principal($email);
+        $id_principal = $this->Autenticacion_model->obtener_id_principal($id_usuario);
 
         $contraseña_guardada = $this->Autenticacion_model->obtener_contraseña($id_usuario);
         
@@ -44,7 +44,7 @@ class Autenticacion extends CI_Controller {
             }
 
             //Guardar la sesion del usuario en BD
-            $this->Sesion_model->registrar($id_usuario);
+            $this->Bitacora_model->registrar($id_usuario, "Autenticación");
 
             //Emitir json con la informacion
             $json = array($email,$token);

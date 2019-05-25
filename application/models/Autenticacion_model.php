@@ -15,9 +15,9 @@ class Autenticacion_model extends CI_Model {
         }
     }
 
-    public function obtener_id_principal($email){
-        $sql = "SELECT u.users_id as id FROM users as u WHERE u.email = ?";
-        $query = $this->db->query($sql, array($email));
+    public function obtener_id_principal($id){
+        $sql = "SELECT l.leader_id as id FROM leaders_users as l WHERE l.user_id = ?";
+        $query = $this->db->query($sql, array($id));
         $row = $query->row_array();
 
         if (isset($row)) {
