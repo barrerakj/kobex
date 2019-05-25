@@ -106,6 +106,6 @@ $route['inicio'] = 'Inicio/pagInicio';
 $route['ayuda'] = 'Inicio/pagAyuda';
 
 //Rutas por defecto
-$route['default_controller'] = 'Inicio/pagInicio';
+$route['default_controller'] = 'Autenticacion/formEntrar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

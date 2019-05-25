@@ -1,4 +1,4 @@
-var base_url = 'http://localhost/kobex-app/';
+var base_url = 'http://localhost/kobex/';
 var usuario = '';
 var token = '';
 

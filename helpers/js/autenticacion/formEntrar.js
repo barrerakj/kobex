@@ -1,6 +1,6 @@
 $(function(){
 
-    var base_url = "http://localhost/kobex-app/";
+    var base_url = "http://localhost/kobex/";
 
     function entrar(){
         let correo = $("#email").val();
