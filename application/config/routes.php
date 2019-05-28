@@ -80,6 +80,20 @@ $route['doc/actualizar/(:any)'] = 'Documento/formActualizar/$1';
 
 
 
+
+//---------------------------------------------
+//Rutas de Casos
+//---------------------------------------------
+
+
+//Rutas para vistas de opciones de casos
+$route['caso/nuevo'] = 'Caso/formNuevo';
+$route['caso/enproceso'] = 'Caso/pagEnProceso';
+$route['caso/archivado'] = 'Caso/pagArchivado';
+
+
+
+
 //---------------------------------------------
 //Rutas de Autenticacion
 //---------------------------------------------

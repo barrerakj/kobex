@@ -1,0 +1,1 @@
+Vista para los casos archivados

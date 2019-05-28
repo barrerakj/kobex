@@ -1,0 +1,1 @@
+Vista para creacion de un caso nuevo

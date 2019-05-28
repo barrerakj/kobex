@@ -26,7 +26,7 @@ class Autenticacion extends CI_Controller {
 
         $contraseña_guardada = $this->Autenticacion_model->obtener_contraseña($id_usuario);
         
-        //desencriptar ambas contrase;as
+        //desencriptar ambas contraseñas
 
         if($contraseña_guardada == $contraseña){
             $token = $this->Autenticacion_model->obtener_token($id_usuario);
@@ -43,15 +43,15 @@ class Autenticacion extends CI_Controller {
                 copy("application/index.html","documents/".$id_principal."/index.html");     
             }
 
-            //Guardar la sesion del usuario en BD
+            //Registrar la sesion del usuario en BD
             $this->Bitacora_model->registrar($id_usuario, "Autenticación");
 
-            //Emitir json con la informacion
             $json = array($email,$token);
         } else {
             $json = array($email, false);
         }
 
+        //Emitir json con la informacion
         echo json_encode($json);
     }
 

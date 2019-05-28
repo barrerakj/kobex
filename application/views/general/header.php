@@ -30,6 +30,25 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Casos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<?php echo base_url()."caso/nuevo" ?>">Nuevo</a>
+          <a class="dropdown-item" href="<?php echo base_url()."caso/enproceso" ?>">En Proceso</a>
+          <a class="dropdown-item" href="<?php echo base_url()."caso/archivado" ?>">Archivados</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Clientes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<?php echo base_url()."cliente/nuevo" ?>">Nuevo</a>
+          <a class="dropdown-item" href="<?php echo base_url()."cliente/listado" ?>">Listado</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Documentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -45,15 +64,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="<?php echo base_url()."plant/nueva" ?>">Nueva</a>
           <a class="dropdown-item" href="<?php echo base_url()."plant/listado" ?>">Listado</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Clientes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo base_url()."cliente/nuevo" ?>">Nuevo</a>
-          <a class="dropdown-item" href="<?php echo base_url()."cliente/listado" ?>">Listado</a>
         </div>
       </li>
       <li class="nav-item dropdown">
