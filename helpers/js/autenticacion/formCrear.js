@@ -2,14 +2,8 @@ $(function(){
 
     var base_url = "http://localhost/kobex/";
 
-    $(".btn-cuenta-nueva").on("click", function(){
-        $(".cuenta-nueva").slideDown();
-        $(".cuenta-existente").slideUp();
-    });
-
-    $(".btn-cuenta-existente").on("click", function(){
-        $(".cuenta-nueva").slideUp();
-        $(".cuenta-existente").slideDown();
+    $("#btn-outline-info").on("click", function(){
+        alert($(this).val());
     });
 
     $(".btn-crear").on("click", function(){

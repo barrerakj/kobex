@@ -19,6 +19,74 @@
 
     <!-- Custom javascript for this form -->
     <script src="<?php echo base_url()."helpers/js/autenticacion/" ?>formCrear.js"></script>
+
+    <!-- Custom styles for this form -->
+    <style>
+    /* Customize the label (the container) */
+        .container-radio {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        }
+
+        /* Hide the browser's default radio button */
+        .container-radio input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container-radio:hover input ~ .checkmark {
+        background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .container-radio input:checked ~ .checkmark {
+        background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .container-radio input:checked ~ .checkmark:after {
+        display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .container-radio .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+        }
+    </style>
   </head>
 
   <body>
@@ -71,49 +139,68 @@
             <br><br>
             <h5>Información de cuenta</h5>
             <hr>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-4">
-                            <h6>Quiero crear una cuenta nueva</h6>
-                        </div>
-                        <div class="col-md-8">
-                            <button type="button" class="btn btn-sm btn-outline-info btn-cuenta-nueva">Seleccionar plan</button>
-                        </div>
+            <p>Por favor seleccione el plan que este mas acorde a sus necesidades. Despues de seleccionar su plan, un colaborador de Kobex le contactará en un rango de 24 horas hábiles para ayudarle con su pago y activación de cuenta.</p>
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Gratis</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$0</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Prueba gratuita por 10 dias</li>
+                            <li>Espacio para casos, documentos y clientes ilimitado</li>
+                            <li>Asociación a 1 cuenta</li>
+                            <li>Acceso al centro de ayuda</li>
+                            <li>&nbsp</li>
+                            <li>&nbsp</li>
+                            <li>&nbsp</li>
+                        </ul>
+                        <label class="container-radio">
+                            Plan Gratuito
+                            <input type="radio" name="radio" id="gratis" value="option0">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
                 </div>
-            </div><br>
-            <div class="card cuenta-nueva" style="display: none;">
-                <div class="card-body">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radio" id="basico" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">Plan Básico</label>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Plan Básico</h4>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radio" id="premium" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">Plan Premium</label>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-5">
-                            <h6>Quiero asociarme a una cuenta existente</h6>
-                        </div>
-                        <div class="col-md-7">
-                            <button type="button" class="btn btn-sm btn-outline-info btn-cuenta-existente">Introducir código</button>
-                        </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$9 <small class="text-muted">/ al mes</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Acceso 24/7 al sitio y todas sus funcionalidades</li>
+                            <li>Espacio para casos, documentos y clientes ilimitado</li>
+                            <li>Asociación a 1 cuenta</li>
+                            <li>Ayuda por correo electrónico en horario laboral</li>
+                            <li>Acceso al centro de ayuda</li>
+                        </ul>
+                        <label class="container-radio">
+                            Plan Básico
+                            <input type="radio" name="radio" id="basico" value="option1">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="card cuenta-existente" style="display: none;">
-                <div class="card-body">
-                    <div class="form-group col-md-6">
-                        <label>Introduzca el código de la cuenta</label>
-                        <input type="text" class="form-control" id="codigo">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Plan Premium</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ al mes</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Acceso 24/7 al sitio y todas sus funcionalidades</li>
+                            <li>Espacio para casos, documentos y clientes ilimitado</li>
+                            <li>Asociación a cuentas ilimitadas</li>
+                            <li>Ayuda por teléfono y correo electrónico 24/7</li>
+                            <li>Acceso al centro de ayuda</li>
+                        </ul>
+                        <label class="container-radio">
+                            Plan Premium
+                            <input type="radio" name="radio" id="premium" value="option2">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
                 </div>
             </div>

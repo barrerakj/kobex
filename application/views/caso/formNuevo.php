@@ -2,12 +2,12 @@
     <h3>Nuevo Caso</h3>
     <hr><br>
     <div class="form-group">
-        <label>Nombre del Documento</label>
+        <label>Nombre del Caso</label>
         <input type="text" class="form-control" id="nombre">
     </div>
     <div class="form-group">
         <label>Seleccione uno o varios Clientes</label>
-        <select multiple class="form-control sltClientes" style="height: 85%;"></select>
+        <select multiple class="form-control sltClientes" style="height: 200px;"></select>
     </div>
     <div class="form-group">
         <label>Seleccione a todos los colaboradores que estaran involucrados en el caso</label>

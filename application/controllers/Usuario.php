@@ -6,7 +6,7 @@ class Usuario extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Usuario_model');
-        $this->load->model('Sesion_model');
+        $this->load->model('Bitacora_model');
         $this->load->model('Autenticacion_model');
     }
     //---------------------------------------------
