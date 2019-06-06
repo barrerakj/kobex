@@ -11,16 +11,17 @@ class Usuario_model extends CI_Model {
             $result = false;
         
         $person_id = $this->db->insert_id();
-        $usuario[1] = $person_id;
+        $usuario[0] = $person_id;
 
-        $sql = "INSERT INTO users (users_id, persons_id, code, email, password, token, roles_id, created_at) VALUES (?,?,?,?,?,?,?,'".date("Y-m-d H:i:s")."')";
+        $sql = "INSERT INTO users (persons_id, code, email, password, token, created_at) VALUES (?,?,?,?,?,'".date("Y-m-d H:i:s")."')";
         if (!$this->db->query($sql, $usuario))
             $result = false;
 
         $users_id = $this->db->insert_id();
-        
-        $sql = "";
-        
+
+        $sql = "INSERT INTO users_plans (users_id, plans_id, active, created_at) VALUES (?,?,?,'".date("Y-m-d H:i:s")."')";
+        if (!$this->db->query($sql, array($users_id, $plans_id, "no")))
+            $result = false;
         
         return $result;
     }

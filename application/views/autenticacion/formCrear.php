@@ -158,7 +158,7 @@
                         </ul>
                         <label class="container-radio">
                             Plan Gratuito
-                            <input type="radio" name="radio" id="gratis" value="option0">
+                            <input type="radio" name="radio" id="plan_gratis" value="1">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -178,7 +178,7 @@
                         </ul>
                         <label class="container-radio">
                             Plan Básico
-                            <input type="radio" name="radio" id="basico" value="option1">
+                            <input type="radio" name="radio" id="basico" value="2">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -198,7 +198,7 @@
                         </ul>
                         <label class="container-radio">
                             Plan Premium
-                            <input type="radio" name="radio" id="premium" value="option2">
+                            <input type="radio" name="radio" id="premium" value="3">
                             <span class="checkmark"></span>
                         </label>
                     </div>

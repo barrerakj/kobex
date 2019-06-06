@@ -2,10 +2,6 @@ $(function(){
 
     var base_url = "http://localhost/kobex/";
 
-    $("#btn-outline-info").on("click", function(){
-        alert($(this).val());
-    });
-
     $(".btn-crear").on("click", function(){
         let _nombre = $("#nombre").val();
         let _apellido = $("#apellido").val();
@@ -14,7 +10,7 @@ $(function(){
         let _correo = $("#correo").val();
         let _pass1 = $("#pass1").val();
         let _pass2 = $("#pass2").val();
-        let _codigo = $("#codigo").val();
+        let _plan = $('input[name=radio]:checked', '.container').val();
         emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if(_nombre != ""){
@@ -30,14 +26,13 @@ $(function(){
                                 direccion: _direccion,
                                 correo: _correo,
                                 pass: _pass1,
-                                codigo: _codigo
+                                plan: _plan
 
                             }, 
                             function(data){
                                 let result = JSON.parse(data);
                                 alert(result);
                                 if(result[0] == true){
-                                    alert("si entre al if");
                                     window.location.replace(base_url + "aut/confirmar");
                                 } else {
                                     $(".toast-body").html("Hemos experimentado un error al intentar crear su cuenta. Por favor, contacte al administrador.");
@@ -61,5 +56,4 @@ $(function(){
             alert("Por favor, ingrese por lo menos el nombre.")
         }
     });
-
 });

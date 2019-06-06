@@ -20,19 +20,15 @@ class Usuario extends CI_Controller {
         $direccion = $this->input->post('direccion');
         $correo = $this->input->post('correo');
         $pass = $this->input->post('pass');
-        $codigo = $this->input->post('codigo');
+        $id_plan = $this->input->post('plan');
 
         /*
         1. Verificar que la variable codigo tenga informacion
         2. Indicar a la funcion "nuevo" que si existe o no existe un id principal
         */
 
-        $result = $this->Usuario_model->obtener_id($codigo);
-        $id_principal = $result[0]['id'];
-        $id_plan = $result[0]['plans_id'];
-
         $persona = array($nombre, $apellido, $direccion, $telefono);
-        $usuario = array($id_principal, "persons_id", "0101", $correo, $pass, "token".$nombre.$apellido, 4);
+        $usuario = array("persons_id", $nombre.$apellido, $correo, $pass, "token".$nombre.$apellido);
         
         if($this->Usuario_model->nuevo($persona, $usuario, $id_plan))
             $json = array(true);
