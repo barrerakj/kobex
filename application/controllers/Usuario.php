@@ -31,6 +31,10 @@ class Usuario extends CI_Controller {
         $usuario = array("persons_id", $nombre.$apellido, $correo, $pass, "token".$nombre.$apellido);
         
         if($this->Usuario_model->nuevo($persona, $usuario, $id_plan))
+            /*
+            1. Enviar un correo al usuario indicando que se ha registrado correctamente
+            2. Enviar un correo al administrador del servicio indicando que hay un usuario nuevo
+            */
             $json = array(true);
         else
             $json = array(false);
@@ -208,6 +212,19 @@ class Usuario extends CI_Controller {
 
         $this->load->view('general/header', $data_header);
         $this->load->view('usuario/formCuenta');
+        $this->load->view('general/footer', $data_footer);
+    }
+
+    public function formAsociar(){
+        
+        if(isset($_SESSION['email'])){
+            $data_header['email'] = $_SESSION['email'];
+        }
+
+        $data_footer["js"] = "usuario/formAsociar.js";
+
+        $this->load->view('general/header', $data_header);
+        $this->load->view('usuario/formAsociar');
         $this->load->view('general/footer', $data_footer);
     }
 }

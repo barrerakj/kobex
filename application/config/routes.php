@@ -18,6 +18,7 @@ $route['usuario/listar_sesiones'] = 'Usuario/sesiones';
 $route['usuario/listado'] = 'Usuario/pagListado';
 $route['usuario/sesiones'] = 'Usuario/pagSesiones';
 $route['usuario/cuenta'] = 'Usuario/formCuenta';
+$route['usuario/asociar'] = 'Usuario/formAsociar';
 
 
 

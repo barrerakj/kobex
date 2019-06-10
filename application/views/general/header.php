@@ -77,8 +77,9 @@
           Usuarios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo base_url()."usuario/listado" ?>">Asociados a mi</a>
-          <a class="dropdown-item" href="<?php echo base_url()."usuario/sesiones" ?>">Sesiones</a>
+          <a class="dropdown-item" href="<?php echo base_url()."usuario/asociar" ?>">Asociar nueva cuenta</a>
+          <a class="dropdown-item" href="<?php echo base_url()."usuario/listado" ?>">Usuarios Asociados</a>
+          <a class="dropdown-item" href="<?php echo base_url()."usuario/sesiones" ?>">Registro</a>
         </div>
       </li>
     </ul>

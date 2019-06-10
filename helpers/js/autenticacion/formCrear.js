@@ -31,7 +31,6 @@ $(function(){
                             }, 
                             function(data){
                                 let result = JSON.parse(data);
-                                alert(result);
                                 if(result[0] == true){
                                     window.location.replace(base_url + "aut/confirmar");
                                 } else {
