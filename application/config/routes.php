@@ -13,6 +13,7 @@ $route['usuario/listar'] = 'Usuario/listar';
 $route['usuario/rol/(:any)'] = 'Usuario/rol/$1';
 $route['usuario/desasociar/(:any)'] = 'Usuario/desasociar/$1';
 $route['usuario/listar_sesiones'] = 'Usuario/sesiones';
+$route['usuario/asociar/$1'] = 'Usuario/asociar/$1';
 
 //Rutas para vistas de opciones de usuario
 $route['usuario/listado'] = 'Usuario/pagListado';

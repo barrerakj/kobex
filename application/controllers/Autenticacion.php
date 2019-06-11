@@ -21,9 +21,6 @@ class Autenticacion extends CI_Controller {
         //Obtener ID de usuario para hacer operaciones
         $id_usuario = $this->Autenticacion_model->obtener_id($email);
 
-        //Obtener ID de usuario principal para obtener datos correctos
-        $id_principal = $this->Autenticacion_model->obtener_id_principal($id_usuario);
-
         $contraseña_guardada = $this->Autenticacion_model->obtener_contraseña($id_usuario);
         
         //desencriptar ambas contraseñas
@@ -33,7 +30,6 @@ class Autenticacion extends CI_Controller {
 
             //Crear la sesion del usuario
             $_SESSION['id'] = $id_usuario;
-            $_SESSION['id_principal'] = $id_principal;
             $_SESSION['email'] = $email;
             $_SESSION['token'] = $token;
 

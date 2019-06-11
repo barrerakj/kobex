@@ -145,6 +145,20 @@ class Usuario extends CI_Controller {
         echo json_encode($json);
     }
 
+    public function asociar($code){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+
+            $id = $this->Usuario_model->obtener_id($code)[0]['id'];
+            $json = array(true,$this->Usuario_model->asociar($_SESSION['id'],$id));
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
     public function desasociar($id){
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){

@@ -71,7 +71,7 @@ class Usuario_model extends CI_Model {
     }
 
     public function obtener_id($codigo){
-        $sql = "SELECT id, plans_id FROM users WHERE code = ?";
+        $sql = "SELECT id FROM users WHERE code = ?";
         $query = $this->db->query($sql, array($codigo));
         return $query->result_array();
     }
@@ -80,6 +80,15 @@ class Usuario_model extends CI_Model {
         $sql = "SELECT u.id as id, p.name as name, p.lastname as lastname, u.created_at as date, p.phone1 as phone, u.email as email, u.roles_id as rol FROM persons as p, users as u WHERE u.persons_id = p.id AND u.users_id = ?";
         $query = $this->db->query($sql, array($id));
         return $query->result_array();
+    }
+
+    public function asociar($leader_id,$id){
+        $result = true;
+        $sql = "INSERT INTO leaders_users (leader_id, user_id, created_at) VALUES (?,?,'".date("Y-m-d H:i:s")."')";
+        if (!$this->db->query($sql, array($leader_id,$id)))
+            $result = false;
+        
+        return $result;
     }
 
     public function desasociar($id){

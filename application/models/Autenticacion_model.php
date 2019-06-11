@@ -15,7 +15,7 @@ class Autenticacion_model extends CI_Model {
         }
     }
 
-    public function obtener_id_principal($id){
+    public function obtener_id_leader($id){
         $sql = "SELECT l.leader_id as id FROM leaders_users as l WHERE l.user_id = ?";
         $query = $this->db->query($sql, array($id));
         $row = $query->row_array();
