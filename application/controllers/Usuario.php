@@ -121,8 +121,8 @@ class Usuario extends CI_Controller {
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
         
-            $id_principal = $_SESSION['id'];
-            $json = array(true, $this->Usuario_model->listar($id_principal));
+            $id_leader = $_SESSION['id'];
+            $json = array(true, $this->Usuario_model->listar($id_leader));
 
         } else {
             $json = array(false,base_url()."aut/entrar");
@@ -131,12 +131,12 @@ class Usuario extends CI_Controller {
         echo json_encode($json);
     }
 
-    public function sesiones(){
+    public function bitacora(){
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
         
-            $id_principal = $_SESSION['id'];
-            $json = array(true, $this->Sesion_model->listado($id_principal));
+            $id_leader = $_SESSION['id'];
+            $json = array(true, $this->Bitacora_model->listado($id_leader));
 
         } else {
             $json = array(false,base_url()."aut/entrar");
@@ -203,16 +203,16 @@ class Usuario extends CI_Controller {
         $this->load->view('general/footer', $data_footer);
     }
 
-    public function pagSesiones(){
+    public function pagBitacora(){
         
         if(isset($_SESSION['email'])){
             $data_header['email'] = $_SESSION['email'];
         }
 
-        $data_footer["js"] = "usuario/pagSesiones.js";
+        $data_footer["js"] = "usuario/pagBitacora.js";
 
         $this->load->view('general/header', $data_header);
-        $this->load->view('usuario/pagSesiones');
+        $this->load->view('usuario/pagBitacora');
         $this->load->view('general/footer', $data_footer);
     }
 

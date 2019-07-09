@@ -77,7 +77,7 @@ class Usuario_model extends CI_Model {
     }
     
     public function listar($id){
-        $sql = "SELECT u.id as id, p.name as name, p.lastname as lastname, u.created_at as date, p.phone1 as phone, u.email as email, u.roles_id as rol FROM persons as p, users as u WHERE u.persons_id = p.id AND u.users_id = ?";
+        $sql = "SELECT u.id as id, p.name as name, p.lastname as lastname, u.created_at as date, p.phone1 as phone, u.email as email FROM persons as p, users as u, leaders_users as lu WHERE lu.leader_id = ? AND lu.user_id = u.id AND u.id = p.id";
         $query = $this->db->query($sql, array($id));
         return $query->result_array();
     }

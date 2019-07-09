@@ -12,12 +12,12 @@ $route['usuario/actualizar_pass'] = 'Usuario/actualizar_pass';
 $route['usuario/listar'] = 'Usuario/listar';
 $route['usuario/rol/(:any)'] = 'Usuario/rol/$1';
 $route['usuario/desasociar/(:any)'] = 'Usuario/desasociar/$1';
-$route['usuario/listar_sesiones'] = 'Usuario/sesiones';
+$route['usuario/listar_bitacora'] = 'Usuario/bitacora';
 $route['usuario/asociar/$1'] = 'Usuario/asociar/$1';
 
 //Rutas para vistas de opciones de usuario
 $route['usuario/listado'] = 'Usuario/pagListado';
-$route['usuario/sesiones'] = 'Usuario/pagSesiones';
+$route['usuario/bitacora'] = 'Usuario/pagBitacora';
 $route['usuario/cuenta'] = 'Usuario/formCuenta';
 $route['usuario/asociar'] = 'Usuario/formAsociar';
 

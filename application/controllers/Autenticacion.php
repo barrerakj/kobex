@@ -34,9 +34,9 @@ class Autenticacion extends CI_Controller {
             $_SESSION['token'] = $token;
 
             //Verificar que exista la carpeta para crearla o no
-            if (!file_exists("documents/".$id_principal) && !is_dir("documents/".$id_principal)) {
-                mkdir("documents/".$id_principal);
-                copy("application/index.html","documents/".$id_principal."/index.html");     
+            if (!file_exists("documents/".$id_usuario) && !is_dir("documents/".$id_usuario)) {
+                mkdir("documents/".$id_usuario);
+                copy("application/index.html","documents/".$id_usuario."/index.html");     
             }
 
             //Registrar la sesion del usuario en BD

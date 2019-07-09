@@ -1,15 +1,15 @@
 <div class="container">
-    <h3>Registro de acceso al sistema</h3>
+    <h3>Bitácora de actividad del sistema</h3>
     <hr><br>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Actividad</th>
                 <th scope="col">Fecha de Acceso</th>
                 <th scope="col">Teléfono 1</th>
                 <th scope="col">Correo Electrónico</th>
-                <th scope="col">Fecha de Asociación</th>
             </tr>
         </thead>
         <tbody class="tbody"></tbody>

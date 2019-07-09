@@ -12,10 +12,16 @@ class Bitacora_model extends CI_Model {
     }
 
     public function listado($id){
-        $sql = 'SELECT u.id as id, p.name as name, p.lastname as lastname, l.created_at as access, p.phone1 as phone, u.email as email, u.created_at as date 
+        $sql = 'SELECT u.id as id, p.name as name, l.action as action, p.lastname as lastname, l.created_at as access, p.phone1 as phone, u.email as email
                 FROM persons as p, users as u, logs as l
-                WHERE (u.id = ? OR u.users_id = ?) AND u.id = l.users_id AND p.id = u.persons_id';
-        $query = $this->db->query($sql, array($id, $id));
+                WHERE l.users_id IN (
+	                SELECT user_id 
+                    FROM leaders_users
+                    WHERE leader_id = ?
+                ) AND l.users_id = u.id 
+                AND u.persons_id = p.id
+                ORDER BY l.created_at DESC';
+        $query = $this->db->query($sql, array($id));
         return $query->result_array();
     }
 }

@@ -9,7 +9,6 @@
                 <th scope="col">Fecha de Asociación</th>
                 <th scope="col">Teléfono 1</th>
                 <th scope="col">Correo Electrónico</th>
-                <th scope="col">Permisos</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>

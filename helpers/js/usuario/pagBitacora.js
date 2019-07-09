@@ -1,6 +1,6 @@
 $(function(){
 
-    $.post(base_url + "usuario/listar_sesiones",
+    $.post(base_url + "usuario/listar_bitacora",
     {
         _token: token
     },
@@ -14,10 +14,10 @@ $(function(){
                     <tr>
                         <th scope="row">`+ sessions[i]["id"] +`</th>
                         <td>`+ sessions[i]["name"] +` `+ sessions[i]["lastname"] +`</td>
+                        <td>`+ sessions[i]["action"] +`</td>
                         <td>`+ sessions[i]["access"] +`</td>
                         <td>`+ sessions[i]["phone"] +`</td>
                         <td>`+ sessions[i]["email"] +`</td>
-                        <td>`+ sessions[i]["date"] +`</td>
                     </tr>`;  
             }
             $(".tbody").html(table_content);
