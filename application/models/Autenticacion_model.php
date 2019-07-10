@@ -15,6 +15,18 @@ class Autenticacion_model extends CI_Model {
         }
     }
 
+    public function verificar_activo($id){
+        $sql = "SELECT u.active as active FROM users as u WHERE u.id = ?";
+        $query = $this->db->query($sql, array($id));
+        $row = $query->row_array();
+
+        if (isset($row)) {
+            return $row['active'];
+        } else {
+            return false;
+        }
+    }
+
     public function obtener_id_leader($id){
         $sql = "SELECT l.leader_id as id FROM leaders_users as l WHERE l.user_id = ?";
         $query = $this->db->query($sql, array($id));

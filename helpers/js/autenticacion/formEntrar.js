@@ -22,9 +22,13 @@ $(function(){
                 if(result[1]){
                     document.cookie = "username="+result[0]+";path=/";
                     document.cookie = "token="+result[1]+";path=/";
-                    window.location.replace(base_url + "inicio");
+                    window.location.replace(base_url + "inicio"); 
                 } else {
-                    alert("Valores erróneos. Intente de nuevo.")
+                    if (result[2] == "Inactivo") {
+                        alert("El usuario que ha usado para autenticarse aun esta inactivo.")
+                    } else {
+                        alert("Valores erróneos. Intente de nuevo.")
+                    }
                 }
             });
         } 

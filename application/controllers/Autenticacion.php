@@ -21,32 +21,37 @@ class Autenticacion extends CI_Controller {
         //Obtener ID de usuario para hacer operaciones
         $id_usuario = $this->Autenticacion_model->obtener_id($email);
 
-        $contraseña_guardada = $this->Autenticacion_model->obtener_contraseña($id_usuario);
+        //verificar si el usuario esta activo
+        $usuario_activo = $this->Autenticacion_model->verificar_activo($id_usuario);
+        if($usuario_activo == "yes"){
+            $contraseña_guardada = $this->Autenticacion_model->obtener_contraseña($id_usuario);
         
-        //desencriptar ambas contraseñas
+            //desencriptar ambas contraseñas
 
-        if($contraseña_guardada == $contraseña){
-            $token = $this->Autenticacion_model->obtener_token($id_usuario);
+            if($contraseña_guardada == $contraseña){
+                $token = $this->Autenticacion_model->obtener_token($id_usuario);
 
-            //Crear la sesion del usuario
-            $_SESSION['id'] = $id_usuario;
-            $_SESSION['email'] = $email;
-            $_SESSION['token'] = $token;
+                //Crear la sesion del usuario
+                $_SESSION['id'] = $id_usuario;
+                $_SESSION['email'] = $email;
+                $_SESSION['token'] = $token;
 
-            //Verificar que exista la carpeta para crearla o no
-            if (!file_exists("documents/".$id_usuario) && !is_dir("documents/".$id_usuario)) {
-                mkdir("documents/".$id_usuario);
-                copy("application/index.html","documents/".$id_usuario."/index.html");     
+                //Verificar que exista la carpeta para crearla o no
+                if (!file_exists("documents/".$id_usuario) && !is_dir("documents/".$id_usuario)) {
+                    mkdir("documents/".$id_usuario);
+                    copy("application/index.html","documents/".$id_usuario."/index.html");     
+                }
+
+                //Registrar la sesion del usuario en BD
+                $this->Bitacora_model->registrar($id_usuario, "Autenticación");
+
+                $json = array($email,$token);
+            } else {
+                $json = array($email, false, "Datos Erroneos");
             }
-
-            //Registrar la sesion del usuario en BD
-            $this->Bitacora_model->registrar($id_usuario, "Autenticación");
-
-            $json = array($email,$token);
         } else {
-            $json = array($email, false);
+            $json = array($email, false, "Inactivo");
         }
-
         //Emitir json con la informacion
         echo json_encode($json);
     }
