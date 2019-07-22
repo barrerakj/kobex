@@ -15,6 +15,10 @@ $(function(){
                     
                 }
                 $(".sltClientes").html(select_content);
+                $(".sltClientes").chosen({
+                    placeholder_text_multiple: "Listado de clientes",
+                    no_results_text: "No hay resultados para"
+                  });
             } else {
                 if(typeof result[1] == "undefined"){
                     $(".toast-body").html("Se ha experimentado un error. Por favor contacte al administrador o intente de nuevo más tarde.");

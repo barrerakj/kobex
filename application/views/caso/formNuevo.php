@@ -7,7 +7,9 @@
     </div>
     <div class="form-group">
         <label>Seleccione uno o varios Clientes</label>
-        <select multiple class="form-control sltClientes" style="height: 200px;"></select>
+        <div class="">
+            <select multiple class="form-control sltClientes"></select>
+        </div>
     </div>
     <div class="form-group">
         <label>Seleccione a todos los colaboradores que estaran involucrados en el caso</label>

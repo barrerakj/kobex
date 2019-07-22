@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="<?php echo base_url()."helpers/css/" ?>chosen/docsupport/style.css">
+    <link rel="stylesheet" href="<?php echo base_url()."helpers/css/" ?>chosen/docsupport/prism.css">
+    <link rel="stylesheet" href="<?php echo base_url()."helpers/css/" ?>chosen/chosen.min.css" />
     <link rel="stylesheet" href="<?php echo base_url()."helpers/bootstrap/css/" ?>bootstrap.css" />
     
     <!-- General pourpose javascript for app -->

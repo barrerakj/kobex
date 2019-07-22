@@ -1,5 +1,6 @@
     <script src="<?php echo base_url()."helpers/js/" ?>jquery.js"></script>
     <script src="<?php echo base_url()."helpers/js/" ?>popper.js"></script>
+    <script src="<?php echo base_url()."helpers/js/chosen/" ?>chosen.jquery.min.js"></script>
     <script src="<?php echo base_url()."helpers/bootstrap/js/" ?>bootstrap.js"></script>
 
     <!-- Custom javascript for this view -->
