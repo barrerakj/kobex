@@ -16,6 +16,7 @@
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Teléfono 1</th>
+                <th scope="col">Email</th>
                 <th scope="col">Permisos</th>
             </tr>
         </thead>

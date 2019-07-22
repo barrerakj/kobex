@@ -5,6 +5,7 @@ class Caso extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('Caso_model');
         //$this->load->model('Documento_model');
         //$this->load->model('Cliente_model');
     }

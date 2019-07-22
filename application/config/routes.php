@@ -23,6 +23,16 @@ $route['usuario/asociar'] = 'Usuario/formAsociar';
 
 
 
+
+//---------------------------------------------
+//Rutas de Roles
+//---------------------------------------------
+
+//Rutas para datos de roles
+$route['rol/listar'] = 'Rol/listado';
+
+
+
 //---------------------------------------------
 //Rutas de Clientes
 //---------------------------------------------

@@ -17,7 +17,7 @@ class Cliente extends CI_Controller {
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
         
-            $id_principal = $_SESSION['id_principal'];
+            $id_principal = $_SESSION['id'];
             $json = array(true, $this->Cliente_model->listar($id_principal));
 
         } else {
@@ -41,7 +41,7 @@ class Cliente extends CI_Controller {
 
             $cliente = array($nombre, $apellido, $direccion, $telefono1, $telefono2, $otros);
 
-            $id_principal = $_SESSION['id_principal'];
+            $id_principal = $_SESSION['id'];
 
             if($id == 0){
                 if($this->Cliente_model->nuevo($id_principal, $cliente)){
