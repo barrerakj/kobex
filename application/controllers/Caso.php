@@ -19,6 +19,7 @@ class Caso extends CI_Controller {
             $data_header['email'] = $_SESSION['email'];
         }
 
+        $data_header["css"] = "chosen/chosen-boostrap.css";
         $data_footer["js"] = "caso/formNuevo.js";
 
         $this->load->view('general/header', $data_header);

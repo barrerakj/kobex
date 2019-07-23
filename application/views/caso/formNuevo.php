@@ -8,7 +8,7 @@
     <div class="form-group">
         <label>Seleccione uno o varios Clientes</label>
         <div class="">
-            <select multiple class="form-control sltClientes"></select>
+            <select multiple class="form-control sltClientes" placeholder="Seleccione uno o mas clientes"></select>
         </div>
     </div>
     <div class="form-group">

@@ -1,5 +1,7 @@
 $(function(){
     
+    
+    
     function listado_clientes(){
         $.post(base_url + "cliente/listar",
         {
@@ -60,7 +62,7 @@ $(function(){
                                     <td>
                                         <select class="form-control">`;
                                             for (let j = 0; j < roles.length; j++) {
-                                                table_content += '<option value="'+ users[i]["id"] +'">'+ roles[j]['name'] + '-' + roles[j]['description'] +'</option>'                                        
+                                                table_content += '<option value="'+ users[i]["id"] +'-'+ roles[j]['id'] +'">'+ roles[j]['name'] + '-' + roles[j]['description'] +'</option>'                                        
                                             }
                     table_content += ` </select>
                                     </td>
@@ -86,6 +88,17 @@ $(function(){
             }
         });
     }
+
+    $(".btnGuardar").on("click", function(){
+        //Recopilar informacion normal
+        let nombre = $("#nombre").val();
+        let descripcion = $("#descripcion").val();
+
+        //Recopilar Id de clientes
+        let clientes = $(".sltClientes").chosen().val();
+        
+        
+    });
 
     listado_clientes();
     listado_colaboradores();
