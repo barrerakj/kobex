@@ -11,6 +11,76 @@ class Caso extends CI_Controller {
     }
 
     //---------------------------------------------
+    //Manipulacion de Datos
+    //---------------------------------------------
+
+    public function guardar(){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+            
+            $nombre = $this->input->post('_nombre');
+            $descripcion = $this->input->post('_descripcion');
+            
+            $resultado = $this->Caso_model->nuevo($nombre, $descripcion);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function guardarClientes() {
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+            
+            $casoId = $this->input->post('_casoId');
+            $clientes = explode(",",$this->input->post('_clientes'));
+            
+            $resultado = $this->Caso_model->guardar_clientes($casoId, $clientes);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function guardarUsuarios(){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+            
+            $casoId = $this->input->post('_casoId');
+            $usuariosRol = explode(",",$this->input->post('_usuariosRol'));
+            
+            $resultado = $this->Caso_model->guardar_usuarios($casoId, $usuariosRol);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    //---------------------------------------------
     //Vistas
     //---------------------------------------------
 

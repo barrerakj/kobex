@@ -6,11 +6,18 @@
         <input type="text" class="form-control" id="nombre">
     </div>
     <div class="form-group">
+        <label>Proporcione una descripción breve y útil para poder identificar este caso con facilidad</label>
+        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+    </div>
+    <div class="form-group">
         <label>Seleccione uno o varios Clientes</label>
         <div class="">
             <select multiple class="form-control sltClientes" placeholder="Seleccione uno o mas clientes"></select>
         </div>
     </div>
+    <br>
+    <button type="button" class="btn btn-lg btn-secondary btnGuardar">Guardar</button>
+    <br><br>
     <div class="form-group">
         <label>Seleccione a todos los colaboradores que estaran involucrados en el caso</label>
         <table class="table table-hover">
@@ -26,17 +33,13 @@
     </table>
     </div>
     <br>
-    <div class="form-group">
-        <label>Proporcione una descripción breve y útil para poder identificar este caso con facilidad</label>
-        <textarea class="form-control" id="descripcion" rows="3"></textarea>
-    </div>
-    <br>
     <button type="button" class="btn btn-lg btn-secondary btnGuardar">Guardar</button>
     <hr>
 </div>
 
 <div aria-live="polite" aria-atomic="true" style="min-height: 200px;">
-    <div class="toast" style="position: absolute; top: 15%; right: 0;" data-delay="10000">
+    <!-- <div class="toast" style="position: absolute; top: 15%; right: 0;" data-delay="10000"> -->
+    <div class="toast" style="position: fixed; top: 15%; right: 0;" data-delay="10000">
         <div class="toast-header">
         <strong class="mr-auto">Kobex</strong>
         <small>Hace 1 segundo</small>
