@@ -107,6 +107,7 @@ $route['caso/archivado'] = 'Caso/pagArchivado';
 $route['caso/guardar'] = 'Caso/guardar';
 $route['caso-clientes/guardar'] = 'Caso/guardarClientes';
 $route['caso-usuarios/guardar'] = 'Caso/guardarUsuarios';
+$route['casos/listar'] = 'Caso/listar';
 
 
 //---------------------------------------------

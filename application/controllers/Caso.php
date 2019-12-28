@@ -80,6 +80,20 @@ class Caso extends CI_Controller {
         echo json_encode($json);
     }
 
+    public function listar(){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+        
+            $id_principal = $_SESSION['id'];
+            $json = array(true, $this->Caso_model->listar($id_principal));
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
     //---------------------------------------------
     //Vistas
     //---------------------------------------------

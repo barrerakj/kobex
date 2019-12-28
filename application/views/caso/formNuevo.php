@@ -20,7 +20,8 @@
     <br><br>
     <div class="form-group">
         <label>Seleccione a todos los colaboradores que estaran involucrados en el caso</label>
-        <table class="table table-hover">
+        <input type="text" class="form-control" id="txtNombre" onkeyup="myFunction()" placeholder="Busque los colaboradores del caso aqui...">
+        <table class="table table-hover" id="tablaColaboradores">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>

@@ -2,10 +2,20 @@
     <h3>Casos en Proceso</h3>
     <hr><br>
     <div class="row">
-        <div class="col-12 col-md-5">
-            <div class="accordion"></div>
-        </div>
-        <div class="col-12 col-md-7 CasoView"></div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Clientes</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Colaboradores </th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
     </div>
 </div>
 
