@@ -104,11 +104,14 @@ $route['caso/enproceso'] = 'Caso/pagEnProceso';
 $route['caso/archivado'] = 'Caso/pagArchivado';
 
 //Rutas para datos de casos
+$route['caso/archivar/(:any)'] = 'Caso/archivar/$1';
+$route['caso/reactivar/(:any)'] = 'Caso/reactivar/$1';
+$route['caso/eliminar/(:any)'] = 'Caso/eliminar/$1';
 $route['caso/guardar'] = 'Caso/guardar';
 $route['caso-clientes/guardar'] = 'Caso/guardarClientes';
 $route['caso-usuarios/guardar'] = 'Caso/guardarUsuarios';
-$route['casos/listar'] = 'Caso/listar';
-
+$route['casos/listar-activos'] = 'Caso/listarActivos';
+$route['casos/listar-archivados'] = 'Caso/listarArchivados';
 
 //---------------------------------------------
 //Rutas de Autenticacion

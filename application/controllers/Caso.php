@@ -20,8 +20,66 @@ class Caso extends CI_Controller {
             
             $nombre = $this->input->post('_nombre');
             $descripcion = $this->input->post('_descripcion');
+            $estado = $this->input->post('_estado');
             
-            $resultado = $this->Caso_model->nuevo($nombre, $descripcion);
+            $resultado = $this->Caso_model->nuevo($nombre, $descripcion, $estado);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function archivar($id){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+                      
+            $resultado = $this->Caso_model->archivar($id);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function reactivar($id){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+                      
+            $resultado = $this->Caso_model->reactivar($id);
+
+            if($resultado){
+                $json = array(true,$resultado);
+            } else {
+                $json = array(false);
+            }
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function eliminar($id){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+                      
+            $resultado = $this->Caso_model->eliminar($id);
 
             if($resultado){
                 $json = array(true,$resultado);
@@ -80,12 +138,26 @@ class Caso extends CI_Controller {
         echo json_encode($json);
     }
 
-    public function listar(){
+    public function listarActivos(){
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
         
             $id_principal = $_SESSION['id'];
-            $json = array(true, $this->Caso_model->listar($id_principal));
+            $json = array(true, $this->Caso_model->listar($id_principal, 'active'));
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    public function listarArchivados(){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+        
+            $id_principal = $_SESSION['id'];
+            $json = array(true, $this->Caso_model->listar($id_principal, 'archive'));
 
         } else {
             $json = array(false,base_url()."aut/entrar");

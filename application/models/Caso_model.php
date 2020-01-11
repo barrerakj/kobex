@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Caso_model extends CI_Model {
 
-    public function listar($users_id){
+    public function listar($users_id, $state){
         //Obtener todos los casos asociados al usuario
-        $sql = "SELECT c.id as id, c.name as name, c.description as description, c.created_at as created_date, c.updated_at as updated_date FROM cases as c, users_cases as uc, users as u WHERE  uc.users_id = u.id AND uc.cases_id = c.id AND u.id = ?";
-        $query = $this->db->query($sql, array($users_id));
+        $sql = "SELECT c.id as id, c.name as name, c.description as description, c.created_at as created_date, c.updated_at as updated_date FROM cases as c, users_cases as uc, users as u WHERE c.state = ? AND uc.users_id = u.id AND uc.cases_id = c.id AND u.id = ?";
+        $query = $this->db->query($sql, array($state, $users_id));
         $UserCases = $query->result_array();
 
         //Obtener todos los clientes asociados a cada caso
@@ -16,19 +16,21 @@ class Caso_model extends CI_Model {
             $query = $this->db->query($sql, array($CaseId));
             $resultClients = $query->result_array();
 
-            //Agregar todos los 
+            $UserCases[$i]['clients'] = [];
+ 
             for ($j=0; $j < count($resultClients); $j++) { 
-                //array_push($UserCases[$i], $resultClients[$j]);
-                $UserCases[$i]['clients'] = $resultClients[$j];
+                array_push($UserCases[$i]['clients'], $resultClients[$j]);
             }
 
             $sql = "SELECT p.name, p.lastname FROM cases as c, users_cases as uc, users as u, persons as p WHERE c.id = ? AND c.id = uc.cases_id AND uc.users_id = u.id AND u.persons_id = p.id";
             $query = $this->db->query($sql, array($CaseId));
             $resultUsers = $query->result_array();
 
+            $UserCases[$i]['users'] = [];
+
             for ($k=0; $k < count($resultUsers); $k++) { 
-                //array_push($UserCases[$i], $resultUsers[$k]);
-                $UserCases[$i]['users'] = $resultUsers[$k];
+                array_push($UserCases[$i]['users'], $resultUsers[$k]);
+                //$UserCases[$i]['users'] = $resultUsers[$k];
             }
             
         }
@@ -36,15 +38,48 @@ class Caso_model extends CI_Model {
         return $UserCases;
     }
     
-    public function nuevo($nombre, $descripcion){
+    public function nuevo($nombre, $descripcion, $estado){
         
         $result = true;
 
-        $sql = "INSERT INTO cases (name, description, created_at) VALUES (?,?,'".date("Y-m-d H:i:s")."')";
-        if (!$this->db->query($sql, array($nombre,$descripcion)))
+        $sql = "INSERT INTO cases (name, description, state, created_at) VALUES (?,?,?,'".date("Y-m-d H:i:s")."')";
+        if (!$this->db->query($sql, array($nombre,$descripcion,$estado)))
             $result = false;
         else
             $result = $this->db->insert_id();
+        
+        return $result;
+    }
+
+    public function archivar($id){
+        
+        $result = true;
+
+        $sql = "UPDATE cases SET state = 'archive' WHERE id = ?";
+        if (!$this->db->query($sql, array($id)))
+            $result = false;
+        
+        return $result;
+    }
+
+    public function reactivar($id){
+        
+        $result = true;
+
+        $sql = "UPDATE cases SET state = 'active' WHERE id = ?";
+        if (!$this->db->query($sql, array($id)))
+            $result = false;
+        
+        return $result;
+    }
+
+    public function eliminar($id){
+        
+        $result = true;
+
+        $sql = "DELETE FROM cases WHERE id = ?";
+        if (!$this->db->query($sql, array($id)))
+            $result = false;
         
         return $result;
     }
