@@ -31,7 +31,7 @@ $(function(){
                             <td>`+ usersNames +`</td>
                             <td>`+ cases[i]["created_date"] +`</td>
                             <td>
-                                <a href="`+base_url+`caso/ver/`+ cases[i]["id"] +`" class="btn btn-outline-secondary far fa-eye" title="Ver los detalles del caso seleccionado."></a> 
+                                <a href="`+base_url+`caso/detalle/`+ cases[i]["id"] +`" class="btn btn-outline-secondary far fa-eye" title="Ver los detalles del caso seleccionado."></a> 
                                 <a href="`+base_url+`caso/editar/`+ cases[i]["id"] +`" class="btn btn-outline-secondary far fa-edit" title="Cambiar la información del caso seleccionado."></a>                                 
                                 <button value="`+ cases[i]["id"] +`" class="btn btn-outline-danger btnArchivar far fa-window-close" title="Archiva el caso seleccionado, para que aparezca en Casos Archivados."></button>
                             </td>

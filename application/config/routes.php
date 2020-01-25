@@ -100,10 +100,12 @@ $route['doc/actualizar/(:any)'] = 'Documento/formActualizar/$1';
 
 //Rutas para vistas de opciones de casos
 $route['caso/nuevo'] = 'Caso/formNuevo';
+$route['caso/detalle/(:any)'] = 'Caso/pagDetalle/$1';
 $route['caso/enproceso'] = 'Caso/pagEnProceso';
 $route['caso/archivado'] = 'Caso/pagArchivado';
 
 //Rutas para datos de casos
+$route['caso/obtener/(:any)'] = 'Caso/obtener/$1';
 $route['caso/archivar/(:any)'] = 'Caso/archivar/$1';
 $route['caso/reactivar/(:any)'] = 'Caso/reactivar/$1';
 $route['caso/eliminar/(:any)'] = 'Caso/eliminar/$1';

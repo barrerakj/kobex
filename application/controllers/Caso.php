@@ -14,6 +14,28 @@ class Caso extends CI_Controller {
     //Manipulacion de Datos
     //---------------------------------------------
 
+    public function obtener($id = 0){
+        $token = $this->input->post('_token');
+        if(isset($_SESSION['token']) && $token == $_SESSION['token']){
+
+            if($id == 0)
+                $id = $_SESSION['id_documento'];
+
+            
+
+            $caso = $this->Caso_model->obtener($id);
+            $documento = $this->Documento_model->obtener($id);
+            $versiones = $this->Documento_model->versiones($id);
+            $json = array(true, $cliente, $documento, $versiones);
+
+        } else {
+            $json = array(false,base_url()."aut/entrar");
+        }
+
+        echo json_encode($json);
+    }
+
+    
     public function guardar(){
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
@@ -180,6 +202,20 @@ class Caso extends CI_Controller {
 
         $this->load->view('general/header', $data_header);
         $this->load->view('caso/formNuevo');
+        $this->load->view('general/footer', $data_footer);
+    }
+
+    public function pagDetalle($id){
+        if(isset($_SESSION['email'])){
+            $data_header['email'] = $_SESSION['email'];
+        }
+
+        $_SESSION['id_caso'] = $id;
+
+        $data_footer["js"] = "caso/pagDetalle.js";
+
+        $this->load->view('general/header', $data_header);
+        $this->load->view('caso/pagDetalle');
         $this->load->view('general/footer', $data_footer);
     }
 
