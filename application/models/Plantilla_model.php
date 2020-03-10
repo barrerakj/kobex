@@ -9,11 +9,11 @@ class Plantilla_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function nueva($id_principal, $plantilla){
+    public function nueva($id_usuario, $plantilla){
         
         $result = true;
 
-        $sql = "INSERT INTO templates (users_id, name, description, created_at) VALUES (".$id_principal.",?,?,'".date("Y-m-d H:i:s")."')";
+        $sql = "INSERT INTO templates (users_id, name, description, created_at) VALUES (".$id_usuario.",?,?,'".date("Y-m-d H:i:s")."')";
         if (!$this->db->query($sql, $plantilla))
             $result = false;
         else

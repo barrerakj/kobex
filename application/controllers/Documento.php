@@ -37,13 +37,12 @@ class Documento extends CI_Controller {
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
             
             $nombre = $this->input->post('_nombre');
-            $idPlantilla = $this->input->post('_idPlantilla');
-            $idCliente = $this->input->post('_idCliente');
             $descripcion = $this->input->post('_descripcion');
 
-            $id_principal = $_SESSION['id_principal'];
+            $id_usuario = $_SESSION['id'];
+            $id_caso = $_SESSION['id_caso'];
             
-            $documento = array($nombre, $idCliente, $idPlantilla, $id_principal);            
+            $documento = array($nombre, $id_usuario, $id_caso);            
 
             $resultado = $this->Documento_model->nuevo($documento, $descripcion);
 
@@ -96,7 +95,7 @@ class Documento extends CI_Controller {
                     $ruta_temporal = $_FILES['files']['tmp_name'][0];
     
                     //Ruta general para el usuario principal
-                    $ruta_general = 'documents/'.$_SESSION['id_principal'].'/';
+                    $ruta_general = 'documents/'.$_SESSION['id'].'/';
     
                     /*
                     Nuevo nombre del archivo
@@ -132,15 +131,15 @@ class Documento extends CI_Controller {
             
             $result = [];
 
-            $id_principal = $_SESSION['id_principal'];
-            $clientes = $this->Cliente_model->listar($id_principal);
-            //1. Listar todos los clientes para el id principal dado
+            $id_usuario = $_SESSION['id'];
+            $clientes = $this->Cliente_model->listar($id_usuario);
+            //1. Listar todos los clientes para el id de usuario dado
 
             //Listar documentos que estan en proceso
             if($tipo == 1){
                 for ($i=0; $i < count($clientes); $i++) { 
                     $id_cliente = $clientes[$i]['id'];
-                    $documentos = $this->Documento_model->listar($id_principal, $id_cliente, "no");
+                    $documentos = $this->Documento_model->listar($id_usuario, $id_cliente, "no");
                     if(count($documentos) > 0) 
                         array_push($result, array($clientes[$i], $documentos));
                 }
@@ -150,7 +149,7 @@ class Documento extends CI_Controller {
             if($tipo == 2){
                 for ($i=0; $i < count($clientes); $i++) { 
                     $id_cliente = $clientes[$i]['id'];
-                    $documentos = $this->Documento_model->listar($id_principal, $id_cliente, "yes");
+                    $documentos = $this->Documento_model->listar($id_usuario, $id_cliente, "yes");
                     if(count($documentos) > 0) 
                         array_push($result, array($clientes[$i], $documentos));
                 }
@@ -224,15 +223,22 @@ class Documento extends CI_Controller {
     //Vistas
     //---------------------------------------------
     
-    public function formNuevo(){
+    public function formNuevo($idCaso){
         if(isset($_SESSION['email'])){
             $data_header['email'] = $_SESSION['email'];
         }
 
+        $_SESSION['id_caso'] =  $idCaso;
+
+        //obtener nombre del caso y nombre de los clientes
+
+        $data['nombre_caso'] = 'caso - resultado de las operaciones del modelo';
+        $data['nombre_clientes'] = 'clientes - resultado de las operaciones del modelo';
+
         $data_footer["js"] = "documento/formNuevo.js";
 
         $this->load->view('general/header', $data_header);
-        $this->load->view('documento/formNuevo');
+        $this->load->view('documento/formNuevo', $data);
         $this->load->view('general/footer', $data_footer);
     }
 

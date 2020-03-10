@@ -11,7 +11,7 @@
                     <th scope="col" width="30%">Descripcion</th>
                     <th scope="col">Colaboradores </th>
                     <th scope="col">Fecha de creación</th>
-                    <th scope="col" width="15%" style="text-align:center">Acciones</th>
+                    <th scope="col" width="15%" style="text-align:center"></th>
                 </tr>
             </thead>
             <tbody class="tbody"></tbody>

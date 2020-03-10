@@ -13,7 +13,7 @@ class Documento_model extends CI_Model {
         
         $result = true;
 
-        $sql = "INSERT INTO documents (name, clients_id, templates_id, users_id, done, created_at) VALUES (?,?,?,?,'no','".date("Y-m-d H:i:s")."')";
+        $sql = "INSERT INTO documents (name, users_id, cases_id, done, created_at) VALUES (?,?,?,'no','".date("Y-m-d H:i:s")."')";
         if (!$this->db->query($sql, $documento))
             $result = false;
         else {

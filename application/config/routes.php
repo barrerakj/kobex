@@ -84,7 +84,7 @@ $route['doc/ultVersion/(:any)'] = 'Documento/ultVersion/$1';
 
 
 //Rutas para vistas de opciones de documento
-$route['doc/nuevo'] = 'Documento/formNuevo';
+$route['doc/nuevo/(:any)'] = 'Documento/formNuevo/$1';
 $route['doc/enproceso'] = 'Documento/pagEnProceso';
 $route['doc/archivado'] = 'Documento/pagArchivado';
 $route['doc/detalle/(:any)'] = 'Documento/pagDetalle/$1';

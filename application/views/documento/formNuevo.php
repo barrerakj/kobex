@@ -2,13 +2,21 @@
     <h3>Nuevo Documento</h3>
     <hr><br>
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>Escoja su plantilla</label>
-            <select class="form-control sltPlantillas"></select>
+        <div class="form-group col-12">
+            <label>Caso:</label>
+            <input type="text" readonly class="form-control" value="<?php echo $nombre_caso; ?>">
         </div>
-        <div class="form-group col-md-6">
-            <label>Seleccione un Cliente</label>
-            <select class="form-control sltClientes"></select>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label">Clientes:</label>
+            <input type="text" readonly class="form-control" value="<?php echo $nombre_clientes; ?>">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label>Escoja su plantilla (de ser necesario)</label>
+            <select class="form-control sltPlantillas"></select>
         </div>
     </div>
     <div id="descargar_plantilla" style="display: none;"></div>

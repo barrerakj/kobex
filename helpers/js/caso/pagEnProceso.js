@@ -31,9 +31,19 @@ $(function(){
                             <td>`+ usersNames +`</td>
                             <td>`+ cases[i]["created_date"] +`</td>
                             <td>
-                                <a href="`+base_url+`caso/detalle/`+ cases[i]["id"] +`" class="btn btn-outline-secondary far fa-eye" title="Ver los detalles del caso seleccionado."></a> 
-                                <a href="`+base_url+`caso/editar/`+ cases[i]["id"] +`" class="btn btn-outline-secondary far fa-edit" title="Cambiar la información del caso seleccionado."></a>                                 
-                                <button value="`+ cases[i]["id"] +`" class="btn btn-outline-danger btnArchivar far fa-window-close" title="Archiva el caso seleccionado, para que aparezca en Casos Archivados."></button>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary far fa-edit dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="`+base_url+`caso/detalle/`+ cases[i]["id"] +`">Ver</a>
+                                        <a class="dropdown-item" href="`+base_url+`caso/editar/`+ cases[i]["id"] +`">Editar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="`+base_url+`doc/nuevo/`+ cases[i]["id"] +`">Agregar Documento</a>
+                                        <a class="dropdown-item" href="#">Agregar Comentario</a>
+                                        <div class="dropdown-divider"></div>
+                                        <button value="`+ cases[i]["id"] +`" class="dropdown-item btnArchivar">Archivar</button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     `;

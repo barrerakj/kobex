@@ -76,8 +76,6 @@ $(function(){
 
     $(".btnGuardar").on("click", function(){
         let nombre = $("#nombre").val();
-        let idPlantilla = $(".sltPlantillas").val();
-        let idCliente = $(".sltClientes").val();
         let descripcion = $("#descripcion").val();
         let formData = new FormData();
 
@@ -89,8 +87,6 @@ $(function(){
             $.post(base_url + "doc/guardar",
             {
                 _nombre: nombre,
-                _idPlantilla: idPlantilla,
-                _idCliente: idCliente,
                 _descripcion: descripcion,
                 _token: token
             },

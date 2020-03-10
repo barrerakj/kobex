@@ -21,9 +21,9 @@ class Plantilla extends CI_Controller {
 
             $plantilla = array($nombre, $descripcion);
 
-            $id_principal = $_SESSION['id_principal'];
+            $id_usuario = $_SESSION['id'];
 
-            $resultado = $this->Plantilla_model->nueva($id_principal, $plantilla);
+            $resultado = $this->Plantilla_model->nueva($id_usuario, $plantilla);
 
             if($resultado){
                 $_SESSION['id_plantilla'] = $resultado;
@@ -56,7 +56,7 @@ class Plantilla extends CI_Controller {
                     $ruta_temporal = $_FILES['files']['tmp_name'][0];
     
                     //Ruta general para el usuario principal
-                    $ruta_general = 'documents/'.$_SESSION['id_principal'].'/';
+                    $ruta_general = 'documents/'.$_SESSION['id'].'/';
     
                     /*
                     Nuevo nombre del archivo
@@ -90,8 +90,8 @@ class Plantilla extends CI_Controller {
         $token = $this->input->post('_token');
         if(isset($_SESSION['token']) && $token == $_SESSION['token']){
         
-            $id_principal = $_SESSION['id_principal'];
-            $json = array(true, $this->Plantilla_model->listar($id_principal));
+            $id_usuario = $_SESSION['id'];
+            $json = array(true, $this->Plantilla_model->listar($id_usuario));
 
         } else {
             $json = array(false,base_url()."aut/entrar");
